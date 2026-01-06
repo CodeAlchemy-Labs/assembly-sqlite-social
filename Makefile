@@ -8,7 +8,7 @@ OBJ_DIR = obj
 BIN_DIR = bin
 TARGET = $(BIN_DIR)/social_network
 
-OBJECTS = $(OBJ_DIR)/main.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/database.o
+OBJECTS = $(OBJ_DIR)/main.o $(OBJ_DIR)/database.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/menu.o
 
 all: directories $(TARGET)
 
@@ -18,7 +18,16 @@ directories:
 $(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^ $(LD_FLAGS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.asm
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.asm
+	$(ASM) $(ASM_FLAGS) -o $@ $<
+
+$(OBJ_DIR)/database.o: $(SRC_DIR)/database.asm
+	$(ASM) $(ASM_FLAGS) -o $@ $<
+
+$(OBJ_DIR)/utils.o: $(SRC_DIR)/utils.asm
+	$(ASM) $(ASM_FLAGS) -o $@ $<
+
+$(OBJ_DIR)/menu.o: $(SRC_DIR)/menu.asm
 	$(ASM) $(ASM_FLAGS) -o $@ $<
 
 clean:
