@@ -21,7 +21,7 @@ A professional-grade demonstration connecting x86-64 Assembly with SQLite databa
 ### 1. Clone and Setup
 ```bash
 # Clone the project
-git clone https://github.com/CodeWithBotinaOficial/assembly-sqlite-social.git
+git clone https://github.com/CodeAlchemy-Labs/assembly-sqlite-social.git
 cd assembly-sqlite-social
 
 # Make scripts executable
