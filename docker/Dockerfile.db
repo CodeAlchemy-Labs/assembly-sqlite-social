@@ -1,0 +1,22 @@
+FROM alpine:latest
+
+# Install SQLite and bash
+RUN apk add --no-cache sqlite sqlite-dev bash
+
+# Create directories
+RUN mkdir -p /data /docker-entrypoint-initdb.d
+
+# Copy entrypoint and initialization scripts
+COPY docker/entrypoint.sh /usr/local/bin/
+COPY database/schema.sql /docker-entrypoint-initdb.d/
+COPY database/seed_data.sql /docker-entrypoint-initdb.d/
+
+# Set permissions
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Health check with longer timeout
+HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=3 \
+    CMD sqlite3 /data/social_network.db "SELECT 1 FROM sqlite_master LIMIT 1;" || exit 1
+
+# Use entrypoint script
+ENTRYPOINT ["entrypoint.sh"]

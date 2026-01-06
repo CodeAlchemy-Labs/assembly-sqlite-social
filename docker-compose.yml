@@ -1,0 +1,46 @@
+services:
+  database:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.db
+    container_name: social-network-db
+    volumes:
+      - sqlite_data:/data
+      - ./database:/docker-entrypoint-initdb.d:ro
+    environment:
+      - DB_PATH=/data/social_network.db
+    networks:
+      - assembly-network
+    restart: unless-stopped
+
+  assembly-dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.asm
+    container_name: assembly-dev
+    volumes:
+      - .:/workspace
+      - sqlite_data:/data:rw
+    working_dir: /workspace
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - assembly-network
+    stdin_open: true
+    tty: true
+    environment:
+      - DB_PATH=/data/social_network.db
+      - LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/lib
+
+networks:
+  assembly-network:
+    driver: bridge
+
+volumes:
+  sqlite_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data

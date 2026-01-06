@@ -1,0 +1,204 @@
+# ===========================================
+# Assembly + SQLite Project - Complete .gitignore
+# ============================================
+
+# ------------------------------------------------------------------
+# ARCHIVOS EJECUTABLES Y OBJETO DE ASSEMBLY
+# ------------------------------------------------------------------
+bin/                    # Directorio de ejecutables compilados
+obj/                    # Directorio de objetos (.o)
+*.o                     # Archivos objeto
+*.obj                   # Archivos objeto (Windows)
+*.exe                   # Ejecutables Windows
+*.out                   # Ejecutables Linux
+*.elf                   # Ejecutables ELF
+*.bin                   # Archivos binarios
+*.com                   # Archivos COM (DOS)
+*.lst                   # Listados del ensamblador
+*.map                   # Map files
+
+# ------------------------------------------------------------------
+# DATABASE FILES
+# ------------------------------------------------------------------
+*.db                    # Archivos de base de datos SQLite
+*.db-journal            # Archivos de journal de SQLite
+*.sqlite                # Extensiones alternativas de SQLite
+*.sqlite3
+data/*                  # Directorio de datos (excepto .keep)
+!data/.keep             # Mantener este archivo para estructura
+*.sql                   # Backups de SQL (si se generan automáticamente)
+database/dump*.sql      # Dumps automáticos
+
+# ------------------------------------------------------------------
+# DOCKER AND CONTAINER FILES
+# ------------------------------------------------------------------
+# Directorios de Docker (pueden ser recreados)
+docker/dev/
+docker/prod/
+
+# Docker Compose
+docker-compose.override.yml
+docker-compose.prod.yml
+docker-compose.dev.yml
+
+# Docker build artifacts
+.dockerignore
+Dockerfile.dev
+Dockerfile.prod
+
+# Volumes y datos de contenedores
+volumes/
+docker-volumes/
+
+# Container runtime files
+*.cid
+*.pid
+
+# ------------------------------------------------------------------
+# DEVELOPMENT ENVIRONMENT
+# ------------------------------------------------------------------
+# IDE and Editor files
+.vscode/                # Visual Studio Code
+.idea/                  # IntelliJ IDEA
+*.swp                   # Vim swap files
+*.swo                   # Vim swap files
+*.swn                   # Vim swap files
+*.bak                   # Backup files
+*~                      # Backup files
+*.tmp                   # Temporary files
+*.temp                  # Temporary files
+
+# Logs
+*.log
+logs/
+*.pid
+*.seed
+
+# Cache
+.cache/
+.cache/*
+__pycache__/           # Python cache
+*.pyc
+
+# ------------------------------------------------------------------
+# BUILD ARTIFACTS AND DEPENDENCIES
+# ------------------------------------------------------------------
+# Bibliotecas descargadas/extrajadas
+lib/*.a
+lib/*.so
+lib/*.dylib
+!lib/.keep              # Mantener este archivo
+
+# Paquetes de dependencias
+vendor/
+node_modules/
+packages/
+
+# Archivos de configuración de build
+build/
+dist/
+out/
+target/
+release/
+debug/
+
+# ------------------------------------------------------------------
+# SYSTEM FILES
+# ------------------------------------------------------------------
+.DS_Store              # macOS
+Thumbs.db              # Windows
+desktop.ini            # Windows
+*.lnk                  # Windows shortcuts
+
+# ------------------------------------------------------------------
+# DOCUMENTATION GENERATED
+# ------------------------------------------------------------------
+docs/_build/
+docs/_site/
+*.chm
+*.html
+
+# ------------------------------------------------------------------
+# TEST AND COVERAGE REPORTS
+# ------------------------------------------------------------------
+*.gcda
+*.gcno
+*.gcov
+coverage/
+htmlcov/
+.coverage
+*.lcov
+
+# ------------------------------------------------------------------
+# PROJECT SPECIFIC
+# ------------------------------------------------------------------
+# Archivos de configuración personalizados
+.env                   # Environment variables
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Credenciales y secrets
+*.pem
+*.key
+*.crt
+*.cert
+secrets.yml
+credentials.json
+
+# Archivos de usuario
+.user.ini
+
+# ------------------------------------------------------------------
+# BACKUP FILES
+# ------------------------------------------------------------------
+*.orig
+*.rej
+*.bk
+*.backup
+
+# ------------------------------------------------------------------
+# SCRIPT TEMPORARY FILES
+# ------------------------------------------------------------------
+*.stackdump
+*.core
+*.dmp
+
+# ------------------------------------------------------------------
+# ASSEMBLY SPECIFIC
+# ------------------------------------------------------------------
+# Archivos intermedios de ensamblador
+*.i                    # Archivos preprocesados
+*.s                    # Código assembler
+*.asm.bak              # Backups de archivos .asm
+
+# ------------------------------------------------------------------
+# SQLITE SPECIFIC
+# ------------------------------------------------------------------
+*-shm                  # Shared memory files (WAL mode)
+*-wal                  # Write-ahead log files
+*-journal              # Rollback journal files
+
+# ------------------------------------------------------------------
+# MAKE AND AUTOMATION
+# ------------------------------------------------------------------
+# Archivos generados por make
+*.d                    # Dependency files
+Makefile.local
+.depend
+
+# ------------------------------------------------------------------
+# VIRTUAL ENVIRONMENTS
+# ------------------------------------------------------------------
+# Python virtual environments
+venv/
+env/
+ENV/
+
+# ------------------------------------------------------------------
+# NOTE: KEEP FILES
+# ------------------------------------------------------------------
+# Estos archivos deben mantenerse en el repositorio
+!.keep
+!*.sample
